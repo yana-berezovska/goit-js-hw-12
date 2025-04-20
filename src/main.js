@@ -79,6 +79,11 @@ async function loadMore(event) {
     moreBtn.disabled = false;
   } catch (error) {
     console.log(error);
+    iziToast.error({
+      message: 'Something went wrong.Please try again later!',
+      position: 'topRight',
+      backgroundColor: '#ef4040',
+    });
   } finally {
     hideLoader();
   }
