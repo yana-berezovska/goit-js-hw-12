@@ -21,6 +21,7 @@ async function handlSubmit(event) {
   event.preventDefault();
 
   clearGallery();
+  page = 1;
 
   query = form.elements['search-text'].value.trim();
   if (!query) {
@@ -32,7 +33,6 @@ async function handlSubmit(event) {
     });
     return;
   }
-  // const searchText = event.target.elements['search-text'].value;
 
   showLoader();
   hideLoadMoreButton();
@@ -54,6 +54,11 @@ async function handlSubmit(event) {
     checkEndOfCollection(totalHits);
   } catch (error) {
     console.log(error);
+    iziToast.error({
+      message: 'Something went wrong.Please try again later!',
+      position: 'topRight',
+      backgroundColor: '#ef4040',
+    });
   } finally {
     hideLoader();
     form.reset();
